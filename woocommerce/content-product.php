@@ -14,7 +14,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 ?>
 <li <?php wc_product_class( 'tsg-product', $product ); ?>>
 	<?php
-	$external = tsg_get_product_external_url( $product );
+	$external = tsg_get_product_handoff_url( $product );
 	$link     = $external ? $external : $product->get_permalink();
 	$target   = $external ? ' target="_blank" rel="noopener noreferrer"' : '';
 	?>

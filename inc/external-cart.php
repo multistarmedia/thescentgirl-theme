@@ -94,7 +94,8 @@ function tsg_jennb_base() {
 function tsg_jennb_url( $path = '' ) {
 	$base = trailingslashit( tsg_jennb_base() );
 	$path = ltrim( (string) $path, '/' );
-	return $path ? $base . $path : untrailingslashit( $base );
+	$url  = $path ? $base . $path : untrailingslashit( $base );
+	return tsg_handoff_url( $url );
 }
 
 /**
@@ -138,10 +139,7 @@ function tsg_jennb_footer_links() {
  * @return string
  */
 function tsg_loop_add_to_cart_external( $html, $product, $args = array() ) {
-	$url = tsg_get_product_external_url( $product );
-	if ( ! $url ) {
-		$url = tsg_jennb_url( 'shop/c/9811/warmers-and-wax' );
-	}
+	$url = tsg_get_product_handoff_url( $product );
 
 	$label = ! empty( $args['cart_text'] ) ? $args['cart_text'] : __( 'Shop now', 'the-scent-girl' );
 	// Prefer classic ATC wording when present.
@@ -178,10 +176,7 @@ function tsg_replace_single_add_to_cart() {
 			if ( ! $product ) {
 				return;
 			}
-			$url = tsg_get_product_external_url( $product );
-			if ( ! $url ) {
-				$url = tsg_jennb_url( 'shop/c/9811/warmers-and-wax' );
-			}
+			$url = tsg_get_product_handoff_url( $product );
 			printf(
 				'<p class="tsg-external-cart-wrap"><a href="%s" class="single_add_to_cart_button button alt tsg-external-cart" target="_blank" rel="noopener noreferrer">%s</a></p>',
 				esc_url( $url ),

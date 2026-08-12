@@ -10,6 +10,8 @@ $btn     = tsg_get_option( 'club_button' );
 $url     = tsg_get_option( 'club_url' );
 if ( ! $url ) {
 	$url = tsg_store_url( 'shop' );
+} else {
+	$url = tsg_handoff_url( $url );
 }
 ?>
 <section class="club" aria-label="<?php esc_attr_e( 'Club', 'the-scent-girl' ); ?>">

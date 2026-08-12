@@ -126,7 +126,7 @@ function tsg_is_jennb_url( $url ) {
 		return false;
 	}
 	$host = strtolower( $host );
-	return 'jennb.scentsy.us' === $host || str_ends_with( $host, '.scentsy.us' );
+	return 'jennb.scentsy.us' === $host || ( strlen( $host ) > 10 && '.scentsy.us' === substr( $host, -10 ) );
 }
 
 /**
