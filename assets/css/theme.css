@@ -1,0 +1,604 @@
+@font-face {
+      font-family: "HVAuckland";
+      src: url("../fonts/HVAuckland-ExtraBold.woff2") format("woff2");
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "HVAuckland";
+      src: url("../fonts/HVAuckland-ExtraBold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "HVAuckland";
+      src: url("../fonts/HVAuckland-Black.woff2") format("woff2");
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #4a4037;
+      --heading: #6e6259;
+      --purple: #88579d;
+      --btn: #6e6259;
+      --btn-hover: #5a5048;
+      --line: #e5e2de;
+      --bar: #f7f7f5;
+      --footer: #7b6e66;
+      --footer-dark: #665c56;
+      --accent-line: #c4a4c9;
+      --max: 1200px;
+      --shop: https://jennb.scentsy.us;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: gotham, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--ink);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--purple); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    h1, h2, h3 {
+      font-family: HVAuckland, Georgia, "Times New Roman", serif;
+      font-weight: 800;
+      color: var(--heading);
+      margin: 0;
+    }
+
+    .wrap {
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* —— Header —— */
+    .site-header {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .header-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 1.25rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .icon-btn {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      padding: 0.35rem;
+      cursor: pointer;
+      color: var(--heading);
+      display: inline-flex;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      border: 1px solid #d9d5d0;
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      min-width: min(280px, 36vw);
+      background: #fff;
+    }
+    .search input {
+      border: 0;
+      outline: none;
+      width: 100%;
+      font: inherit;
+      font-size: 0.9rem;
+      color: var(--ink);
+      background: transparent;
+    }
+    .search input::placeholder { color: #9a9188; }
+    .logo-block {
+      text-align: center;
+    }
+    .logo-block img {
+      height: 36px;
+      width: auto;
+      margin: 0 auto;
+    }
+    .logo-tag {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--heading);
+      font-weight: 500;
+    }
+    .header-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .header-right a {
+      color: var(--heading);
+      display: inline-flex;
+    }
+    .header-right a:hover { text-decoration: none; opacity: 0.75; }
+
+    .consultant-bar {
+      background: var(--bar);
+      border-bottom: 1px solid var(--line);
+      padding: 0.55rem 1.25rem;
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+    .consultant-bar strong { font-weight: 500; }
+    .consultant-bar .stars {
+      color: #c9a227;
+      letter-spacing: 0.05em;
+      margin: 0 0.35rem;
+    }
+    .consultant-bar a {
+      color: var(--ink);
+      margin-left: 0.35rem;
+    }
+
+    /* —— Page intro —— */
+    .crumbs {
+      padding: 1.15rem 0 0.35rem;
+      font-size: 0.88rem;
+      color: var(--purple);
+    }
+    .crumbs a { color: var(--purple); }
+    .crumbs span { color: var(--ink); }
+    .page-intro {
+      padding: 0.35rem 0 1.75rem;
+    }
+    .page-intro h1 {
+      font-size: 36px;
+      line-height: 1.2;
+      margin-bottom: 0.65rem;
+    }
+    .page-intro p {
+      margin: 0;
+      max-width: 46rem;
+      color: var(--ink);
+      font-size: 1rem;
+    }
+
+    /* —— Category tiles —— */
+    .category-type-list {
+      display: flex;
+      gap: 1.25rem;
+      padding-bottom: 2.5rem;
+    }
+    .category-type-list li {
+      flex: 1;
+      min-width: 0;
+    }
+    .category-type-list a {
+      display: block;
+      text-align: center;
+      color: var(--purple);
+      font-size: 16px;
+    }
+    .category-type-list a:hover { text-decoration: none; }
+    .category-type-list a:hover span { text-decoration: underline; }
+    .category-type-list img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center;
+      margin-bottom: 0.65rem;
+      background: var(--bar);
+    }
+
+    /* —— Shared section chrome —— */
+    .section {
+      padding: 2.75rem 0;
+    }
+    .section-rule-head {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .section-rule-head h2 {
+      font-size: 32px;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+    .section-rule-head .rule {
+      width: 1px;
+      height: 1.6rem;
+      background: #cfc8c1;
+      flex: 0 0 auto;
+    }
+    .section-rule-head .sub {
+      color: var(--ink);
+      font-size: 1rem;
+      margin: 0;
+      flex: 1 1 200px;
+    }
+    .section-rule-head .actions {
+      margin-left: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 20px;
+      border: 1px solid var(--btn);
+      background: var(--btn);
+      color: #fff;
+      font-family: gotham, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      border-radius: 0;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .btn:hover {
+      background: var(--btn-hover);
+      border-color: var(--btn-hover);
+      text-decoration: none;
+      color: #fff;
+    }
+    .btn-light {
+      background: #fff;
+      color: var(--heading);
+      border-color: #fff;
+    }
+    .btn-light:hover {
+      background: #f3f1ee;
+      color: var(--heading);
+      border-color: #f3f1ee;
+    }
+
+    /* —— Décor gallery —— */
+    .decor-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr 1.35fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.75rem;
+      min-height: 560px;
+    }
+    .decor-grid figure {
+      margin: 0;
+      overflow: hidden;
+      background: var(--bar);
+      position: relative;
+    }
+    .decor-grid figure:nth-child(1) {
+      grid-row: 1 / span 2;
+    }
+    .decor-grid figure:nth-child(4) {
+      grid-row: 1 / span 2;
+      grid-column: 3;
+    }
+    .decor-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* —— How it works —— */
+    .how {
+      text-align: center;
+      padding-top: 3rem;
+      padding-bottom: 3.25rem;
+    }
+    .how h2 {
+      font-size: 32px;
+      margin-bottom: 0.55rem;
+    }
+    .how .accent {
+      width: 48px;
+      height: 2px;
+      background: var(--accent-line);
+      margin: 0 auto 1rem;
+    }
+    .steps {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1.75rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .step {
+      flex: 0 1 240px;
+      max-width: 240px;
+    }
+    .step img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      margin: 0 auto 0.5rem;
+    }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #e8e4df;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: HVAuckland, serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+    .step p {
+      margin: 0;
+      font-family: HVAuckland, serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--heading);
+    }
+
+    /* —— Fragrance —— */
+    .fragrance-head {
+      padding: 1rem 0 1.25rem;
+    }
+    .fragrance-banner {
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+    .fragrance-banner img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .fragrance-banner .btn {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* —— Club —— */
+    .club {
+      background: var(--bar);
+      padding: 1.5rem 0;
+      margin-top: 0;
+    }
+    .club-inner {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .club-inner img {
+      height: 28px;
+      width: auto;
+    }
+    .club-inner .rule {
+      width: 1px;
+      height: 2rem;
+      background: #cfc8c1;
+    }
+    .club-inner p {
+      margin: 0;
+      flex: 1 1 280px;
+      color: var(--ink);
+    }
+    .club-inner .btn { margin-left: auto; }
+
+    /* —— Types —— */
+    .types-intro {
+      text-align: center;
+      max-width: 40rem;
+      margin: 0 auto 2rem;
+    }
+    .types-intro h2 {
+      font-size: 32px;
+      margin-bottom: 0.55rem;
+    }
+    .types-intro .accent {
+      width: 48px;
+      height: 2px;
+      background: var(--accent-line);
+      margin: 0.65rem auto 0.9rem;
+    }
+    .types-intro p { margin: 0; color: var(--ink); }
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .type-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      background: var(--bar);
+    }
+    .type-card h3 {
+      font-family: gotham, sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin-bottom: 0.45rem;
+    }
+    .type-card p {
+      margin: 0 0 1rem;
+      color: var(--ink);
+      font-size: 0.95rem;
+      min-height: 4.2em;
+    }
+
+    /* —— Primary CTA strip —— */
+    .shop-strip {
+      text-align: center;
+      padding: 2.5rem 0 3rem;
+    }
+    .shop-strip p {
+      margin: 0 0 1rem;
+      color: var(--ink);
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--footer);
+      color: #fff;
+      padding: 2.5rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .footer-brand img {
+      height: 34px;
+      width: auto;
+      margin-bottom: 0.25rem;
+    }
+    .footer-brand .logo-tag {
+      color: rgba(255,255,255,0.9);
+      text-align: left;
+      margin-bottom: 1.25rem;
+    }
+    .consultant-card {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+    .consultant-card img {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      background: rgba(255,255,255,0.15);
+    }
+    .consultant-card .name {
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+    .consultant-card .stars { color: #e4c35a; font-size: 0.85rem; }
+    .consultant-card .title {
+      font-size: 0.88rem;
+      opacity: 0.92;
+      margin: 0.15rem 0 0.45rem;
+    }
+    .consultant-card .links a {
+      color: #fff;
+      margin-right: 0.85rem;
+      font-size: 0.9rem;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .footer-col h4 {
+      margin: 0 0 0.75rem;
+      font-family: gotham, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .footer-col a {
+      display: block;
+      color: #fff;
+      margin-bottom: 0.45rem;
+      font-size: 0.92rem;
+    }
+    .legal-bar {
+      background: var(--footer-dark);
+      color: rgba(255,255,255,0.88);
+      padding: 0.85rem 0;
+      font-size: 0.78rem;
+    }
+    .legal-bar .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .legal-bar a {
+      color: rgba(255,255,255,0.88);
+      margin-right: 0.75rem;
+    }
+
+    /* —— $10 off chip (visual parity) —— */
+    .coupon-chip {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 40;
+      background: #fff;
+      border: 1px solid #d9d5d0;
+      border-radius: 999px;
+      padding: 0.55rem 0.95rem;
+      font-family: HVAuckland, serif;
+      font-weight: 800;
+      color: var(--heading);
+      font-size: 0.95rem;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      text-decoration: none;
+    }
+    .coupon-chip:hover {
+      text-decoration: none;
+      color: var(--heading);
+    }
+
+    @media (max-width: 960px) {
+      .header-row { grid-template-columns: auto 1fr auto; }
+      .search { display: none; }
+      .category-type-list { flex-wrap: wrap; }
+      .category-type-list li { flex: 1 1 calc(50% - 0.75rem); }
+      .decor-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+        min-height: 0;
+      }
+      .decor-grid figure:nth-child(1),
+      .decor-grid figure:nth-child(4) {
+        grid-row: auto;
+        grid-column: auto;
+      }
+      .decor-grid figure { min-height: 220px; }
+      .steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+        max-width: none;
+      }
+      .step { max-width: 220px; }
+      .types-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .club-inner .btn { margin-left: 0; }
+      .section-rule-head .actions { margin-left: 0; width: 100%; }
+    }
+
+    @media (max-width: 640px) {
+      .page-intro h1 { font-size: 28px; }
+      .section-rule-head h2,
+      .how h2,
+      .types-intro h2 { font-size: 26px; }
+      .wrap { width: min(100% - 1.5rem, var(--max)); }
+      .logo-block img { height: 30px; }
+    }
