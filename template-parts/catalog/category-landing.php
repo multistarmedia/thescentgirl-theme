@@ -39,7 +39,7 @@ $has_mkt  = tsg_category_has_marketing( $term );
 			<ul class="category-type-list">
 				<?php foreach ( $children as $child ) : ?>
 					<li>
-						<a href="<?php echo esc_url( get_term_link( $child ) ); ?>">
+						<a href="<?php echo esc_url( tsg_get_category_link( $child ) ); ?>">
 							<img
 								src="<?php echo esc_url( tsg_get_term_image_url( $child ) ); ?>"
 								alt=""
@@ -106,7 +106,7 @@ $has_mkt  = tsg_category_has_marketing( $term );
 	<section class="shop-strip">
 		<div class="wrap">
 			<p><?php echo esc_html( sprintf( /* translators: category name */ __( 'Ready to shop %s?', 'the-scent-girl' ), $term->name ) ); ?></p>
-			<a class="btn" href="<?php echo esc_url( get_term_link( $term ) ); ?>"><?php echo esc_html( sprintf( /* translators: category name */ __( 'Shop all %s', 'the-scent-girl' ), $term->name ) ); ?></a>
+			<a class="btn" href="<?php echo esc_url( tsg_get_category_link( $term ) ); ?>"><?php echo esc_html( sprintf( /* translators: category name */ __( 'Shop all %s', 'the-scent-girl' ), $term->name ) ); ?></a>
 		</div>
 	</section>
 </main>

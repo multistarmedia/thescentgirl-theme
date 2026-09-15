@@ -21,6 +21,7 @@ function tsg_demo_catalog_blueprint() {
 		'parent'   => array(
 			'name'        => 'Warmers & Wax',
 			'slug'        => 'warmers-and-wax',
+			'external_url' => 'https://jennb.scentsy.us/shop/c/9811/warmers-and-wax',
 			'description' => 'Scentsy Warmers are a beautiful and safe way to enjoy amazing fragrance with our premium-quality Scentsy Bars.',
 			'image'       => 'https://imagelive.scentsy.com/cmsimages/Categories/1200x1200HOMEWarmerClassicCrestRA2026.jpeg',
 			'meta'        => array(
@@ -58,21 +59,25 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'  => 'Wax Bars',
 				'slug'  => 'wax-bars',
+				'external_url' => 'https://jennb.scentsy.us/shop/c/4410/wax-bars',
 				'image' => 'https://imagelive.scentsy.com/cmsimages/Categories/1200x1200InspireLTOCypressCitronR13.jpeg',
 			),
 			array(
 				'name'  => 'Warmers',
 				'slug'  => 'warmers',
+				'external_url' => 'https://jennb.scentsy.us/shop/c/4436/warmers',
 				'image' => 'https://imagelive.scentsy.com/cmsimages/Categories/1200x1200HOMEWarmerClassicCrestRA2026.jpeg',
 			),
 			array(
 				'name'  => 'Bulbs & Accessories',
 				'slug'  => 'bulbs-and-accessories',
+				'external_url' => 'https://jennb.scentsy.us/shop/c/4439/bulbs-and-accessories',
 				'image' => 'https://imagelive.scentsy.com/cmsimages/Categories/1200x1200FW25BulbsRA3af21b91d94f43a3bcbf0ad049e7de96.jpeg',
 			),
 			array(
 				'name'  => 'Warmer Dishes & Lids',
 				'slug'  => 'warmer-dishes-and-lids',
+				'external_url' => 'https://jennb.scentsy.us/shop/c/7769/warmer-dishes-and-lids',
 				'image' => 'https://imagelive.scentsy.com/cmsimages/Categories/HOMEWarmerSandedLineaPACKSHOTDishR12026PWS.jpeg',
 			),
 		),
@@ -366,6 +371,10 @@ function tsg_upsert_category( $data, $parent = 0 ) {
 		$term_id = (int) $result['term_id'];
 	}
 
+	if ( ! empty( $data['external_url'] ) ) {
+		update_term_meta( $term_id, 'tsg_external_url', esc_url_raw( $data['external_url'] ) );
+	}
+
 	if ( ! empty( $data['image'] ) ) {
 		update_term_meta( $term_id, 'tsg_image_url', esc_url_raw( $data['image'] ) );
 		$att = tsg_sideload_image( $data['image'], $data['name'] );
@@ -483,12 +492,9 @@ function tsg_seed_demo_catalog() {
 			}
 		}
 
-		if ( ! empty( $child_ids['wax-bars'] ) ) {
-			update_term_meta( $parent_id, 'tsg_fragrance_url', get_term_link( (int) $child_ids['wax-bars'] ) );
-		}
-		if ( ! empty( $child_ids['warmers'] ) ) {
-			update_term_meta( $parent_id, 'tsg_decor_btn_url', get_term_link( (int) $child_ids['warmers'] ) );
-		}
+		// Leave these blank so the sections resolve the child category's external URL at render time.
+		delete_term_meta( $parent_id, 'tsg_fragrance_url' );
+		delete_term_meta( $parent_id, 'tsg_decor_btn_url' );
 	}
 
 	foreach ( $blueprint['products'] as $product ) {

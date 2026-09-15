@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function tsg_category_meta_fields() {
 	return array(
+		'tsg_external_url'    => __( 'External category URL (JennB) — used instead of the internal archive when set', 'the-scent-girl' ),
 		'tsg_decor_heading'   => __( 'Décor heading', 'the-scent-girl' ),
 		'tsg_decor_sub'       => __( 'Décor subcopy', 'the-scent-girl' ),
 		'tsg_decor_btn'       => __( 'Décor button label', 'the-scent-girl' ),
@@ -109,6 +110,25 @@ function tsg_save_product_cat_meta( $term_id ) {
 }
 add_action( 'created_product_cat', 'tsg_save_product_cat_meta' );
 add_action( 'edited_product_cat', 'tsg_save_product_cat_meta' );
+
+/**
+ * Category link: external JennB URL (with Party ID) when set, else the internal archive.
+ *
+ * @param WP_Term|int $term Term or term ID.
+ * @return string
+ */
+function tsg_get_category_link( $term ) {
+	$term = $term instanceof WP_Term ? $term : get_term( (int) $term, 'product_cat' );
+	if ( ! $term instanceof WP_Term ) {
+		return home_url( '/' );
+	}
+	$external = tsg_term_meta( $term->term_id, 'tsg_external_url' );
+	if ( $external ) {
+		return tsg_handoff_url( esc_url_raw( $external ) );
+	}
+	$link = get_term_link( $term );
+	return is_wp_error( $link ) ? home_url( '/' ) : $link;
+}
 
 /**
  * Get a single category marketing value with fallback.

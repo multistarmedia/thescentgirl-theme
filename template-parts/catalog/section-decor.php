@@ -18,7 +18,9 @@ $btn_url = tsg_term_meta( $term->term_id, 'tsg_decor_btn_url', '' );
 
 if ( ! $btn_url ) {
 	$children = tsg_get_category_children( $term->term_id );
-	$btn_url  = $children ? get_term_link( $children[0] ) : get_term_link( $term );
+	$btn_url  = tsg_get_category_link( $children ? $children[0] : $term );
+} else {
+	$btn_url = tsg_handoff_url( $btn_url );
 }
 
 if ( ! $images ) {

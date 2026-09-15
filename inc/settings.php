@@ -108,6 +108,13 @@ function tsg_settings_page_render() {
  * @return string
  */
 function tsg_get_party_id() {
+	// A partyId on the incoming URL (e.g. PPC landing traffic) wins for this request.
+	if ( ! is_admin() && isset( $_GET['partyId'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$incoming = tsg_sanitize_party_id( wp_unslash( $_GET['partyId'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		if ( '' !== $incoming ) {
+			return $incoming;
+		}
+	}
 	return tsg_sanitize_party_id( get_option( 'tsg_party_id', '' ) );
 }
 

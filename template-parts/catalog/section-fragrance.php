@@ -18,7 +18,9 @@ $btn_url = tsg_term_meta( $term->term_id, 'tsg_fragrance_url', '' );
 
 if ( ! $btn_url ) {
 	$wax     = get_term_by( 'slug', 'wax-bars', 'product_cat' );
-	$btn_url = ( $wax && ! is_wp_error( $wax ) ) ? get_term_link( $wax ) : get_term_link( $term );
+	$btn_url = tsg_get_category_link( ( $wax && ! is_wp_error( $wax ) ) ? $wax : $term );
+} else {
+	$btn_url = tsg_handoff_url( $btn_url );
 }
 
 if ( ! $image ) {
