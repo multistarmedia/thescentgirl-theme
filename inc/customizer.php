@@ -38,6 +38,27 @@ function tsg_customize_register( $wp_customize ) {
 		'external_handoff_url'  => __( 'External shop handoff URL', 'the-scent-girl' ),
 	);
 
+	// Party ID — stored as the tsg_party_id option (shared with Settings > JennB Handoff).
+	$wp_customize->add_setting(
+		'tsg_party_id',
+		array(
+			'type'              => 'option',
+			'default'           => '',
+			'sanitize_callback' => 'tsg_sanitize_party_id',
+			'transport'         => 'refresh',
+		)
+	);
+	$wp_customize->add_control(
+		'tsg_party_id',
+		array(
+			'label'       => __( 'Party ID', 'the-scent-girl' ),
+			'description' => __( 'Digits only. Appended as ?partyId= to every JennB link and the search form.', 'the-scent-girl' ),
+			'section'     => 'tsg_brand',
+			'type'        => 'text',
+			'priority'    => 5,
+		)
+	);
+
 	$defaults = tsg_default_options();
 
 	foreach ( $fields as $key => $label ) {

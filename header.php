@@ -16,7 +16,10 @@
 					<path d="M0 1h22M0 8h22M0 15h22" stroke="currentColor" stroke-width="1.5"/>
 				</svg>
 			</button>
-			<form class="search" action="https://jennb.scentsy.us/product/search" method="get" role="search">
+			<form class="search" action="<?php echo esc_url( tsg_jennb_url( 'product/search' ) ); ?>" method="get" role="search">
+				<?php if ( tsg_get_party_id() ) : ?>
+					<input type="hidden" name="partyId" value="<?php echo esc_attr( tsg_get_party_id() ); ?>" />
+				<?php endif; ?>
 				<input type="search" name="query" placeholder="<?php esc_attr_e( 'Search', 'the-scent-girl' ); ?>" aria-label="<?php esc_attr_e( 'Search', 'the-scent-girl' ); ?>" />
 				<button class="icon-btn" type="submit" aria-label="<?php esc_attr_e( 'Submit search', 'the-scent-girl' ); ?>">
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
