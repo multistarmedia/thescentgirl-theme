@@ -50,10 +50,10 @@
 		</a>
 
 		<div class="header-right">
-			<a href="<?php echo esc_url( tsg_store_url( 'account' ) ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e( 'Account', 'the-scent-girl' ); ?>">
+			<a href="<?php echo esc_url( tsg_store_url( 'account' ) ); ?>" aria-label="<?php esc_attr_e( 'Account', 'the-scent-girl' ); ?>">
 				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 19c1.5-3.2 4-4.8 7-4.8s5.5 1.6 7 4.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
 			</a>
-			<a href="<?php echo esc_url( tsg_store_url( 'cart' ) ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e( 'View cart', 'the-scent-girl' ); ?>">
+			<a href="<?php echo esc_url( tsg_store_url( 'cart' ) ); ?>" aria-label="<?php esc_attr_e( 'View cart', 'the-scent-girl' ); ?>">
 				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 8h12l-1 11H7L6 8z" stroke="currentColor" stroke-width="1.5"/><path d="M9 8V7a3 3 0 0 1 6 0v1" stroke="currentColor" stroke-width="1.5"/></svg>
 			</a>
 		</div>
@@ -75,6 +75,6 @@
 		<strong><?php echo esc_html( tsg_get_option( 'consultant_name' ) ); ?></strong>
 		<span class="stars" aria-label="<?php esc_attr_e( '5 stars', 'the-scent-girl' ); ?>">★★★★★</span>
 		<span aria-hidden="true">|</span>
-		<a href="<?php echo esc_url( tsg_store_url( 'shop' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Select a party', 'the-scent-girl' ); ?></a>
+		<a href="<?php echo esc_url( tsg_store_url( 'shop' ) ); ?>"><?php esc_html_e( 'Select a party', 'the-scent-girl' ); ?></a>
 	</div>
 </header>

@@ -21,6 +21,6 @@ if ( ! $url ) {
 		</strong>
 		<span class="rule" aria-hidden="true"></span>
 		<p><?php echo esc_html( $heading ); ?></p>
-		<a class="btn" href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $btn ); ?></a>
+		<a class="btn" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $btn ); ?></a>
 	</div>
 </section>

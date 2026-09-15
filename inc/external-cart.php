@@ -150,7 +150,7 @@ function tsg_loop_add_to_cart_external( $html, $product, $args = array() ) {
 	}
 
 	return sprintf(
-		'<a href="%s" class="button product_type_external add_to_cart_button tsg-external-cart" target="_blank" rel="noopener noreferrer" aria-label="%s">%s</a>',
+		'<a href="%s" class="button product_type_external add_to_cart_button tsg-external-cart" aria-label="%s">%s</a>',
 		esc_url( $url ),
 		esc_attr( sprintf( /* translators: product name */ __( 'Shop %s on Scentsy', 'the-scent-girl' ), $product->get_name() ) ),
 		esc_html( $label )
@@ -178,7 +178,7 @@ function tsg_replace_single_add_to_cart() {
 			}
 			$url = tsg_get_product_handoff_url( $product );
 			printf(
-				'<p class="tsg-external-cart-wrap"><a href="%s" class="single_add_to_cart_button button alt tsg-external-cart" target="_blank" rel="noopener noreferrer">%s</a></p>',
+				'<p class="tsg-external-cart-wrap"><a href="%s" class="single_add_to_cart_button button alt tsg-external-cart">%s</a></p>',
 				esc_url( $url ),
 				esc_html__( 'Add to cart', 'the-scent-girl' )
 			);

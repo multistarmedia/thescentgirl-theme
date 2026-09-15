@@ -16,9 +16,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	<?php
 	$external = tsg_get_product_handoff_url( $product );
 	$link     = $external ? $external : $product->get_permalink();
-	$target   = $external ? ' target="_blank" rel="noopener noreferrer"' : '';
 	?>
-	<a href="<?php echo esc_url( $link ); ?>" class="woocommerce-LoopProduct-link"<?php echo $target; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<a href="<?php echo esc_url( $link ); ?>" class="woocommerce-LoopProduct-link">
 		<?php echo $product->get_image( 'tsg-product-card' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<h2 class="woocommerce-loop-product__title"><?php echo esc_html( $product->get_name() ); ?></h2>
 		<span class="price"><?php echo $product->get_price_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>

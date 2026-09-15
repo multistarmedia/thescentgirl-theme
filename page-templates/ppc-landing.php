@@ -39,7 +39,7 @@ if ( $primary && tsg_is_woocommerce() ) {
 			the_content();
 		}
 		?>
-		<p><a class="btn" href="<?php echo esc_url( tsg_store_url( 'shop' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Shop now', 'the-scent-girl' ); ?></a></p>
+		<p><a class="btn" href="<?php echo esc_url( tsg_store_url( 'shop' ) ); ?>"><?php esc_html_e( 'Shop now', 'the-scent-girl' ); ?></a></p>
 	</main>
 	<?php
 }

@@ -36,7 +36,7 @@ $links = tsg_jennb_footer_links();
 					<div class="title"><?php echo esc_html( tsg_get_option( 'consultant_title' ) ); ?></div>
 					<div class="links">
 						<?php foreach ( $links['consultant'] as $label => $url ) : ?>
-							<a href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $label ); ?></a>
+							<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a>
 						<?php endforeach; ?>
 					</div>
 				</div>
@@ -46,14 +46,14 @@ $links = tsg_jennb_footer_links();
 		<div class="footer-col">
 			<h4><?php esc_html_e( 'Scentsy life', 'the-scent-girl' ); ?></h4>
 			<?php foreach ( $links['life'] as $label => $url ) : ?>
-				<a href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $label ); ?></a>
+				<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a>
 			<?php endforeach; ?>
 		</div>
 
 		<div class="footer-col">
 			<h4><?php esc_html_e( 'Helpful links', 'the-scent-girl' ); ?></h4>
 			<?php foreach ( $links['helpful'] as $label => $url ) : ?>
-				<a href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $label ); ?></a>
+				<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a>
 			<?php endforeach; ?>
 		</div>
 	</div>
@@ -63,7 +63,7 @@ $links = tsg_jennb_footer_links();
 	<div class="wrap">
 		<div>
 			<?php foreach ( $links['legal'] as $label => $url ) : ?>
-				<a href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $label ); ?></a>
+				<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a>
 			<?php endforeach; ?>
 			<span>Copyright <?php echo esc_html( gmdate( 'Y' ) ); ?> Scentsy, Inc</span>
 		</div>
@@ -74,7 +74,7 @@ $links = tsg_jennb_footer_links();
 $coupon = tsg_get_option( 'coupon_label' );
 if ( $coupon ) :
 	?>
-	<a class="coupon-chip" href="<?php echo esc_url( tsg_jennb_url( 'shop/c/9811/warmers-and-wax' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $coupon ); ?></a>
+	<a class="coupon-chip" href="<?php echo esc_url( tsg_jennb_url( 'shop/c/9811/warmers-and-wax' ) ); ?>"><?php echo esc_html( $coupon ); ?></a>
 	<?php
 endif;
 ?>
