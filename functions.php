@@ -24,6 +24,7 @@ require_once TSG_DIR . '/inc/external-cart.php';
 require_once TSG_DIR . '/inc/woocommerce.php';
 require_once TSG_DIR . '/inc/demo-catalog.php';
 require_once TSG_DIR . '/inc/nav.php';
+require_once TSG_DIR . '/inc/social-meta.php';
 
 /**
  * Theme supports.

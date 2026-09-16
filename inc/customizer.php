@@ -59,6 +59,28 @@ function tsg_customize_register( $wp_customize ) {
 		)
 	);
 
+	// Default share image (Open Graph) — used when a page has no featured/category image.
+	$wp_customize->add_setting(
+		'tsg_share_image',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+			'transport'         => 'refresh',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'tsg_share_image',
+			array(
+				'label'       => __( 'Default share image', 'the-scent-girl' ),
+				'description' => __( 'Shown when the page is shared on Facebook, iMessage, Slack, etc. Use 1200×630px.', 'the-scent-girl' ),
+				'section'     => 'tsg_brand',
+				'priority'    => 6,
+			)
+		)
+	);
+
 	$defaults = tsg_default_options();
 
 	foreach ( $fields as $key => $label ) {
