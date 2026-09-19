@@ -166,7 +166,20 @@ function tsg_handoff_url( $url ) {
  * @return string
  */
 function tsg_get_product_handoff_url( $product = null, $fallback_path = 'shop/c/9811/warmers-and-wax' ) {
+	if ( is_numeric( $product ) && function_exists( 'wc_get_product' ) ) {
+		$product = wc_get_product( $product );
+	}
+	if ( ! $product && function_exists( 'wc_get_product' ) ) {
+		$product = wc_get_product( get_the_ID() );
+	}
+
 	$url = tsg_get_product_external_url( $product );
+
+	// No product URL stored: search JennB for the product by name rather than
+	// dumping the shopper on a category page.
+	if ( ! $url && $product && method_exists( $product, 'get_name' ) && $product->get_name() ) {
+		$url = add_query_arg( 'query', $product->get_name(), tsg_jennb_url( 'product/search' ) );
+	}
 	if ( ! $url ) {
 		$url = tsg_jennb_url( $fallback_path );
 	}

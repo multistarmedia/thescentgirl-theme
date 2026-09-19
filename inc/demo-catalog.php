@@ -85,6 +85,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'White Marigold Warmer',
 				'slug'       => 'white-marigold-warmer',
+				'external_url' => 'https://jennb.scentsy.us/shop/p/106211/white-marigold-warmer',
 				'price'      => '55.00',
 				'cats'       => array( 'warmers', 'warmers-and-wax' ),
 				'type'       => 'standard',
@@ -94,6 +95,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'Bluebell Gingham Warmer',
 				'slug'       => 'bluebell-gingham-warmer',
+				'external_url' => 'https://jennb.scentsy.us/shop/p/106089/bluebell-gingham-warmer',
 				'price'      => '55.00',
 				'cats'       => array( 'warmers', 'warmers-and-wax' ),
 				'type'       => 'standard',
@@ -103,6 +105,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'Classic Crest Warmer',
 				'slug'       => 'classic-crest-warmer',
+				'external_url' => 'https://jennb.scentsy.us/shop/p/106088/classic-crest-warmer',
 				'price'      => '60.00',
 				'cats'       => array( 'warmers', 'warmers-and-wax' ),
 				'type'       => 'standard',
@@ -112,6 +115,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'Gossamer Haze Warmer',
 				'slug'       => 'gossamer-haze-warmer',
+				'external_url' => 'https://jennb.scentsy.us/shop/p/106202/gossamer-haze-warmer',
 				'price'      => '55.00',
 				'cats'       => array( 'warmers', 'warmers-and-wax' ),
 				'type'       => 'standard',
@@ -121,6 +125,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'Sanded Linea Warmer',
 				'slug'       => 'sanded-linea-warmer',
+				'external_url' => 'https://jennb.scentsy.us/shop/p/106213/sanded-linea-warmer',
 				'price'      => '50.00',
 				'cats'       => array( 'warmers', 'warmers-and-wax' ),
 				'type'       => 'standard',
@@ -130,6 +135,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'Lustra Warmer',
 				'slug'       => 'lustra-warmer',
+				'external_url' => 'https://jennb.scentsy.us/shop/p/106208/lustra-warmer',
 				'price'      => '55.00',
 				'cats'       => array( 'warmers', 'warmers-and-wax' ),
 				'type'       => 'element',
@@ -139,6 +145,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'Fancy Filigree Mini Warmer',
 				'slug'       => 'fancy-filigree-mini-warmer',
+				'external_url' => 'https://jennb.scentsy.us/shop/p/101334/fancy-filigree-mini-warmer',
 				'price'      => '25.00',
 				'cats'       => array( 'warmers', 'warmers-and-wax' ),
 				'type'       => 'mini-warmers',
@@ -148,6 +155,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'Provence Lavender Scentsy Bar',
 				'slug'       => 'provence-lavender-scentsy-bar',
+				'external_url' => 'https://jennb.scentsy.us/shop/p/92961/provence-lavender-scentsy-bar',
 				'price'      => '7.00',
 				'cats'       => array( 'wax-bars', 'warmers-and-wax' ),
 				'type'       => '',
@@ -157,6 +165,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'Cypress Citron Scentsy Bar',
 				'slug'       => 'cypress-citron-scentsy-bar',
+				'external_url' => 'https://jennb.scentsy.us/shop/p/106640/cypress-and-citron-scentsy-bar',
 				'price'      => '7.00',
 				'cats'       => array( 'wax-bars', 'warmers-and-wax' ),
 				'type'       => '',
@@ -166,6 +175,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'Warmer Replacement Dish',
 				'slug'       => 'warmer-replacement-dish',
+				'external_url' => 'https://jennb.scentsy.us/shop/c/7769/warmer-dishes-and-lids',
 				'price'      => '9.00',
 				'cats'       => array( 'warmer-dishes-and-lids', 'warmers-and-wax' ),
 				'type'       => '',
@@ -175,6 +185,7 @@ function tsg_demo_catalog_blueprint() {
 			array(
 				'name'       => 'Scentsy Warmer Bulbs (2-pack)',
 				'slug'       => 'scentsy-warmer-bulbs',
+				'external_url' => 'https://jennb.scentsy.us/shop/c/4439/bulbs-and-accessories',
 				'price'      => '7.00',
 				'cats'       => array( 'bulbs-and-accessories', 'warmers-and-wax' ),
 				'type'       => '',
@@ -456,12 +467,13 @@ function tsg_upsert_product( $data ) {
 	}
 
 	// External URL → JennB product handoff (catalog column).
+	// Only write when the blueprint provides a product URL. Never overwrite a
+	// product link with a category fallback — that is resolved at render time.
 	$external = $data['external_url'] ?? '';
-	if ( ! $external ) {
-		$external = 'https://jennb.scentsy.us/shop/c/9811/warmers-and-wax';
+	if ( $external ) {
+		update_post_meta( $product_id, 'External URL', esc_url_raw( $external ) );
+		update_post_meta( $product_id, 'external_url', esc_url_raw( $external ) );
 	}
-	update_post_meta( $product_id, 'External URL', esc_url_raw( $external ) );
-	update_post_meta( $product_id, 'external_url', esc_url_raw( $external ) );
 
 	return (int) $product_id;
 }
